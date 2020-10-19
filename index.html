@@ -1,0 +1,237 @@
+<style>
+	.wires{
+		position:absolute;
+		margin-left:30%;
+		margin-right:30%;
+		width:40%;
+		height:60%;
+		background-color: black;
+	}
+	.info{
+
+		margin-left:30%;
+		margin-right:30%;
+		width:40%;
+		height:5%;
+
+	}
+	.image{
+		width:100%;
+		height:100%;
+		display:block;
+	}
+
+	body{
+		background-color: gray;
+	}
+	.first_half{
+		margin-top:15%;
+		height:3%;
+		position:absolute;
+		width:5%;
+		border: 10px red;
+		background-color: blue;
+
+	}
+	.second_half{
+		height:2%;
+		z-index:2;
+		position:absolute;
+		width:3%;
+		top:190px;
+	}
+	.third_half{
+		height:2%;
+		z-index:2;
+		position:absolute;
+		width:3%;
+		top:285px;
+	}
+
+	.fourth_half{
+		height:2%;
+		z-index:2;
+		position:absolute;
+		width:3%;
+		top:380px;
+	}
+
+
+
+	.first_half1{
+		left:400;
+		top:90px;
+		height:2%;
+		background-color: red !important;
+		z-index: 2;
+		position:absolute;
+		width:3%;
+	}
+	.second_half2{
+		left:400;
+		height:2%;
+		z-index:2;
+		position:absolute;
+		width:3%;
+		top:190px;
+	}
+	.third_half3{
+		left:400;		
+		height:2%;
+		z-index:2;
+		position:absolute;
+		width:3%;
+		top:285px;
+	}
+
+	.fourth_half4{
+		left:400;		
+		height:2%;
+		z-index:2;
+		position:absolute;
+		width:3%;
+		top:380px;
+	}
+
+
+</style>
+
+<!--<canvas id="wires" width="600" height="600" class="wires">	
+EEE
+
+</canvas>-->
+<html>
+<body>
+
+<div class="info">
+	<center><h2>Połącz kabelki :) </h2></center>
+<br>
+</div>
+
+<canvas id="wires" class="wires">	
+
+
+
+
+</canvas>
+</body>
+</html>
+
+
+
+
+<script type="text/javascript">
+
+
+window.onload=function() {
+	canv=document.getElementById("wires");
+	ctx=canv.getContext("2d");
+	//document.addEventListener("keydown",keyPush);
+	//setInterval(game,1000/15);
+	ctx.fillStyle="red";
+	//x,y,sizex, sizey
+	//ctx.fillRect(fxl,30,5, 10);
+	//ctx.fillRect(canv.width-20, 30,5, 10);
+	this.createWires(0, canv.width);
+
+	//ctx.fillRect(0,0,canv.width,canv.height);
+	console.log("SIZE " + canv.width + " Hei" + canv.height);
+	var fxl = canv.width;
+
+	canv.addEventListener('click', function(event) {
+    var x = event.pageX;
+    var y = event.pageY;
+    console.log("X:"  + x + " Y:" + y)
+    console.log(event);
+}, false);
+
+}
+
+fxl = 0;
+
+function createWires( lx = 0, rx){
+	var colors = ["green", "pink", "red", "blue"];
+	var colors2 = ["pink", "blue", "green", "red"];
+
+	/*for (var i = 0; i < 4; i++) {
+
+  		ctx = canv.getContext("2d");
+  		ctx.fillRect(lx, 30*i+20, 15, 10);
+
+	} */
+
+	var random = this.getRandomInt(0, 4);
+	for (var i = 0; i < 4; i++) {
+
+
+  		ctx = canv.getContext("2d");
+  		
+  		if(random < 2){
+  			ctx.fillStyle=colors[4-1-i];
+  			console.log(4-1-i);
+  		}else{
+  			ctx.fillStyle=colors2[i];
+  		}
+  		ctx.fillRect(lx, 30*i+20, 15, 10);
+
+  		
+	} 
+
+
+
+	//var used = [];
+	var random = this.getRandomInt(0, 4);
+	for (var i = 0; i < 4; i++) {
+
+
+  		ctx = canv.getContext("2d");
+  		
+  		if(random < 2){
+  			ctx.fillStyle=colors[4-1-i];
+  			console.log(4-1-i);
+  		}else{
+  			ctx.fillStyle=colors[i];
+  		}
+  		//console.log(i);
+  		
+  		ctx.fillRect(rx-15, 30*i+20, 15, 10);
+  		/*var rint = this.getRandomInt(0, 4);
+  		console.log(rint + "RINT ");
+  		console.log(used.includes(rint) + " <<INCLUDES");
+  		if(used.includes(rint) == false){
+  			ctx.fillStyle=colors[rint];
+  			used.push(rint);
+  			ctx.fillRect(rx-15, 30*i+20, 15, 10);
+
+  		}
+  		else{
+  			console.log("TU IDE");
+  			var gownozmienna = false;
+  				
+  			for(var d=0; d<4; d++){
+  				console.log(used.includes(d) + d +" << DUP");
+  				if(used.includes(d) == false && gownozmienna == false){
+  					ctx.fillStyle=colors[rint];
+  					used.push(rint);
+  					//ctx.fillRect(rx-15, 30*i+20, 15, 10);
+  					ctx.fillRect(rx-15, 30*i+20, 15, 10);
+  					gownozmienna = true;
+
+  				}
+  			}
+  		}*/
+  		//ctx.fillStyle=cars[rint];
+  		//TODO DODAĆ LOSOWOŚĆ
+  		
+	} 
+	
+}
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+
+
+
+
+</script>
